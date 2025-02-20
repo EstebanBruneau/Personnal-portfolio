@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Vue via CDN Example</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2Relaxfamily=Roboto:wght@400;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="animated-bg.css">
+    <!-- Vue.js CDN -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- Import Components -->
+    <script src="SiteHeader.js"></script>
+    <script src="SiteFooter.js"></script>
+    <script src="ResumeSection.js"></script>
+    <script src="FormationSection.js"></script>
+    <script src="HeroSection.js"></script>
+    <script src="ActionButton.js"></script>
+    <script src="QuestionSection.js"></script>
+    <script src="starry-background.js"></script>
+    <script src="ProjectsSection.js"></script>
+</head>
+<body>
+    <div id="app" class="container">
+        <div class="sky-background"></div>
+        <div class="animated-background"></div>
+        <!-- Wrap tabs in transition -->
+        <transition name="tabs">
+            <tabs v-if="currentTab !== 'Home' && currentTab !== 'Relax'"></tabs>
+        </transition>
+        <!-- Add transition wrapper -->
+        <transition name="page-transition" mode="out-in">
+            <div v-if="currentTab === 'Home'" class="section home-section" :key="'home'">
+                <hero-section></hero-section>
+            </div>
+            <div v-else-if="currentTab === 'Experience'" class="section" :key="'experience'">
+                <resume-section></resume-section>
+            </div>
+            <div v-else-if="currentTab === 'Formation'" class="section" :key="'formation'">
+                <formation-section></formation-section>
+            </div>
+            <div v-else-if="currentTab === 'Projects'" class="section" :key="'projects'">
+                <projects-section></projects-section>
+            </div>
+            <div v-else-if="currentTab === 'Relax'" :key="'relax'">
+                <question-section></question-section>
+            </div>
+        </transition>
+    </div>
+
+    <script>
+        // Define a Tabs Component
+        const Tabs = {
+            template: `
+                <div class="tabs">
+                    <button v-for="tab in tabs" :key="tab" @click="selectTab(tab)" :class="{ active: tab === $root.selectedTab }">
+                        {{ tab }}
+                    </button>
+                </div>
+            `,
+            data() {
+                return {
+                    tabs: ['Home', 'Experience', 'Formation', 'Projects', 'Relax']
+                };
+            },
+            methods: {
+                selectTab(tab) {
+                    if (tab === 'Relax') {
+                        // Store current tab before switching to Relax
+                        this.$root.lastTab = this.$root.currentTab;
+                    }
+                    this.$root.selectedTab = tab;
+                    this.$root.currentTab = tab;
+                }
+            }
+        };
+
+        // Create the Vue app
+        const app = Vue.createApp({
+            data() {
+                return {
+                    currentTab: 'Home',
+                    selectedTab: 'Home',
+                    lastTab: 'Home',
+                    heroTitle: 'Stylish Hero Section'
+                };
+            },
+            watch: {
+                currentTab(newTab) {
+                    // Toggle body class based on current tab
+                    document.body.classList.toggle('home-active', newTab === 'Home');
+                }
+            },
+            mounted() {
+                // Set initial body class
+                document.body.classList.toggle('home-active', this.currentTab === 'Home');
+            },
+            methods: {
+                updateHeroTitle(newTitle) {
+                    this.heroTitle = newTitle;
+                }
+            }
+        });
+
+        // Register components globally
+        app.component('tabs', Tabs);
+        app.component('site-header', SiteHeader);
+        app.component('hero-section', HeroSection);
+        app.component('action-button', ActionButton);
+        app.component('site-footer', SiteFooter);
+        app.component('resume-section', ResumeSection);
+        app.component('formation-section', FormationSection);
+        app.component('question-section', QuestionSection);
+        app.component('projects-section', ProjectsSection);
+
+        // Mount the Vue instance
+        app.mount('#app');
+        createStars();
+    </script>
+</body>
+</html>
