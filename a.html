@@ -5,10 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Vue via CDN Example</title>
+    <meta name="description" content="Portfolio of Esteban Bruneau - Engineering Student in Computer Science">
+    <meta name="keywords" content="software engineer, web development, computer science, portfolio">
+    <meta name="author" content="Esteban Bruneau">
+    <meta property="og:title" content="Esteban Bruneau - Portfolio">
+    <meta property="og:description" content="Engineering Student in Computer Science">
+    <meta property="og:type" content="website">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2Relaxfamily=Roboto:wght@400;700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="animated-bg.css">
+    <!-- Add preconnect for external resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <!-- Vue.js CDN -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <!-- Import Components -->
@@ -21,8 +30,12 @@
     <script src="QuestionSection.js"></script>
     <script src="starry-background.js"></script>
     <script src="ProjectsSection.js"></script>
+    <!-- Add error boundary component -->
+    <script src="ErrorBoundary.js"></script>
 </head>
 <body>
+    <!-- Add skip link for accessibility -->
+    <a href="#app" class="visually-hidden">Skip to main content</a>
     <div id="app" class="container">
         <div class="sky-background"></div>
         <div class="animated-background"></div>
