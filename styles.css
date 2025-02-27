@@ -1,5 +1,6 @@
 /* General Styles */
 body {
+    cursor: url('img/wiicursor.png'), auto;
     font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
@@ -112,7 +113,7 @@ header {
     inset: -5px;
     border-radius: 50%;
     background: linear-gradient(45deg, #64ffda, transparent);
-    animation: rotateGradient 4s linear infinite;
+    /* animation: rotateGradient 4s linear infinite; */
     z-index: -1;
 }
 
@@ -143,15 +144,62 @@ header {
 }
 
 .hero-text h1 {
-    font-size: 3em;
-    margin-bottom: 10px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    color: #ffffff;
-    background: linear-gradient(45deg, #ffffff, #64ffda);
+    font-size: 3.5em;
+    margin-bottom: 15px;
+    background: linear-gradient(120deg, #ffffff 0%, #64ffda 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: gradientFlow 8s linear infinite;
+    position: relative;
+    display: inline-block;
+    letter-spacing: -0.02em;
+    font-weight: 800;
+    line-height: 1.1;
+    text-shadow: none;
+    animation: 
+        gradientFlow 8s linear infinite,
+        slideInGlow 1s ease-out forwards;
+}
+
+.hero-text h1::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: linear-gradient(120deg, 
+        rgba(255, 255, 255, 0.2) 0%, 
+        rgba(100, 255, 218, 0.2) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transform: translateX(-10px);
+    filter: blur(8px);
+    opacity: 0.7;
+    animation: textGlow 8s linear infinite;
+}
+
+@keyframes slideInGlow {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes textGlow {
+    0%, 100% {
+        filter: blur(8px);
+        opacity: 0.7;
+    }
+    50% {
+        filter: blur(12px);
+        opacity: 0.9;
+    }
 }
 
 @keyframes gradientFlow {
@@ -188,6 +236,7 @@ header {
     color: #8892b0;
 }
 
+/* Updated Social Links Styles */
 .hero-social {
     margin-bottom: 30px;
     display: flex;
@@ -200,96 +249,102 @@ header {
 .social-link {
     color: #ffffff;
     font-size: 1.5em;
-    margin-right: 20px;
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     position: relative;
-    display: inline-block;
-    width: 45px;
-    height: 45px;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
-    background: rgba(100, 255, 218, 0.1);
-    border: 1px solid rgba(100, 255, 218, 0.2);
+    background: rgba(100, 255, 218, 0.05);
+    border: 2px solid rgba(100, 255, 218, 0.1);
+    overflow: hidden;
+    z-index: 1;
+}
+
+.social-link::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: #64ffda;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.4s ease, height 0.4s ease;
+    z-index: -1;
 }
 
 .social-link:hover {
+    color: #112240;
     transform: translateY(-5px) scale(1.1);
-    color: #64ffda;
-    background: rgba(100, 255, 218, 0.2);
     border-color: #64ffda;
+    box-shadow: 
+        0 7px 15px rgba(100, 255, 218, 0.25),
+        0 0 15px rgba(100, 255, 218, 0.2),
+        0 0 3px rgba(100, 255, 218, 0.1);
 }
 
-.social-link::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    bottom: -5px;
-    left: 0;
-    background-color: #64ffda;
-    transform: scaleX(0);
-    transform-origin: right;
+.social-link:hover::before {
+    width: 150%;
+    height: 150%;
+}
+
+.social-link:active {
+    transform: translateY(-2px) scale(1.05);
+}
+
+.social-link i {
+    position: relative;
+    z-index: 2;
     transition: transform 0.3s ease;
 }
 
-.social-link:hover::after {
-    transform: scaleX(1);
-    transform-origin: left;
+.social-link:hover i {
+    transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+    .social-link {
+        width: 45px;
+        height: 45px;
+        font-size: 1.3em;
+    }
 }
 
 .cta-button {
-    padding: 15px 40px;
+    padding: 15px 30px;
     font-size: 1.1em;
-    background: linear-gradient(
-        45deg,
-        rgba(100, 255, 218, 0.1),
-        rgba(100, 255, 218, 0.2)
-    );
-    color: #64ffda;
-    border: 1px solid rgba(100, 255, 218, 0.3);
-    border-radius: 30px;
+    background: #64ffda;
+    color: #112240;
+    border: none;
+    border-radius: 8px;
     cursor: pointer;
-    backdrop-filter: blur(4px);
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    font-weight: 600;
     letter-spacing: 0.5px;
-    text-transform:none;
-    font-weight: 500;
+    text-transform: none;
     animation: fadeIn 0.8s ease-out forwards;
     animation-delay: 0.9s;
     opacity: 0;
 }
 
-.cta-button::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255, 255, 255, 0.2),
-        transparent
-    );
-    transition: 0.4s;
-}
-
 .cta-button:hover {
-    transform: translateY(-3px) scale(1.02);
-    background: rgba(100, 255, 218, 0.2);
-    border-color: rgba(100, 255, 218, 0.6);
-    box-shadow: 
-        0 0 20px rgba(100, 255, 218, 0.2),
-        0 0 40px rgba(100, 255, 218, 0.1);
+    transform: translateY(-2px);
+    background: #73ffdeb0;
 }
 
 .cta-button:hover::before {
     left: 100%;
+}
+
+.cta-button:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 10px rgba(100, 255, 218, 0.3);
 }
 
 @media (max-width: 768px) {
@@ -310,7 +365,7 @@ header {
     }
 
     .hero-text h1 {
-        font-size: 2.5em;
+        font-size: 2.8em;
     }
 
     .hero-text h2 {
@@ -377,8 +432,6 @@ footer {
 .tabs-enter-active,
 .tabs-leave-active {
     transition: opacity 0.3s ease, transform 0.3s ease;
-    /* position: absolute; */
-    /* width: 100%; */
 }
 
 .tabs-enter-from {
@@ -408,12 +461,12 @@ footer {
 
 .tabs button:hover {
     background: rgba(255, 255, 255, 0.2);
-    /* box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2); */
     border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 .tabs button.active {
-    border: 1px solid #64ffda;
+    border: 1px solid rgba(0, 247, 255, 0.831);
+    background: rgba(255, 255, 255, 0.1);
 }
 
 @media (max-width: 768px) {
@@ -480,12 +533,6 @@ footer {
 
 .fade-slide-leave-active {
     animation: fadeSlideIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) reverse;
-}
-
-/* Accessibility Improvements */
-:focus {
-    outline: 2px solid #64ffda;
-    outline-offset: 2px;
 }
 
 .visually-hidden {
@@ -836,21 +883,17 @@ footer {
 }
 
 .formation h3::before {
-    content: '';
+    content: '▹';
     position: absolute;
     left: 0;
-    top: 50%;
-    width: 10px;
-    height: 10px;
-    background: #64ffda;
-    border-radius: 50%;
-    transform: translateY(-50%);
-    transition: all 0.3s ease;
+    color: #64ffda;
+    font-size: 1.2em;
 }
 
+/* Remove the existing hover effect on formation h3::before */
 .formation li:hover h3::before {
-    transform: translateY(-50%) scale(1.2);
-    box-shadow: 0 0 15px rgba(100, 255, 218, 0.5);
+    transform: none;
+    box-shadow: none;
 }
 
 .formation .period {
@@ -960,7 +1003,6 @@ footer {
 
 .question-section button.active {
     background: rgba(255, 255, 255, 0.3);
-    border: 1px solid #64ffda;
 }
 
 .question-section .fade-in-text {
@@ -1231,21 +1273,17 @@ body.home-active {
 }
 
 .project-info h3::before {
-    content: '';
+    content: '▹';
     position: absolute;
     left: 0;
-    top: 50%;
-    width: 10px;
-    height: 10px;
-    background: #64ffda;
-    border-radius: 50%;
-    transform: translateY(-50%);
-    transition: all 0.3s ease;
+    color: #64ffda;
+    font-size: 1.2em;
 }
 
+/* Remove the existing hover effect on project-info h3::before */
 .project-card:hover .project-info h3::before {
-    transform: translateY(-50%) scale(1.2);
-    box-shadow: 0 0 15px rgba(100, 255, 218, 0.5);
+    transform: none;
+    box-shadow: none;
 }
 
 .project-info p {
