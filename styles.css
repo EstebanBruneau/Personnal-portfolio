@@ -1,6 +1,6 @@
 /* General Styles */
 body {
-    cursor: url('img/wiicursor.png'), auto;
+    cursor: url('img/wiicursor.png');
     font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
@@ -112,8 +112,6 @@ header {
     position: absolute;
     inset: -5px;
     border-radius: 50%;
-    background: linear-gradient(45deg, #64ffda, transparent);
-    /* animation: rotateGradient 4s linear infinite; */
     z-index: -1;
 }
 
@@ -128,15 +126,8 @@ header {
     border-radius: 50%;
     border: 5px solid white;
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
-    transition: transform 0.5s ease, box-shadow 0.5s ease;
 }
 
-.hero-image:hover img {
-    transform: scale(1.05);
-    box-shadow: 
-        0 0 30px rgba(100, 255, 218, 0.3),
-        0 0 60px rgba(100, 255, 218, 0.2);
-}
 
 .hero-text {
     color: white;
