@@ -21,36 +21,25 @@ const ResumeSection = {
         return {
             jobs: [
                 {
-                    title: 'Senior Software Developer',
-                    company: 'XYZ Corp',
-                    period: 'Jan 2020 - Present',
-                    description: 'Lead developer for enterprise web applications focusing on scalability and performance.',
+                    title: 'Software Engineer/Business Intelligence Engineer',
+                    company: 'Carrefour Headquarters - Massy, France',
+                    period: '2023 - Present',
+                    description: 'Software development and business intelligence engineering in an enterprise environment',
                     achievements: [
-                        'Improved application performance by 40%',
-                        'Led a team of 5 developers',
-                        'Implemented CI/CD pipeline'
+                        'Designed interactive dashboards in Looker Studio to centralize and visualize cloud costs, improving the accuracy of cost reporting by more than 10%, and halved the time required to access costs',
+                        'Mapped business processes for the Carrefour France HR department using the APQC Process Classification Framework, identifying at least 5 duplicate and useless processes',
+                        'Handled the maintenance of an internal application (Java/Angular) used by 400 collaborators monthly, including updates, bug fixes, and tests',
+                        'Developed and automated weekly reports for IT architects, leveraging data from HOPEX, Google Analytics, and internal surveys, resulting in a 20% improvement of France IT Department\'s data completeness'
                     ]
                 },
                 {
-                    title: 'Frontend Developer',
-                    company: 'ABC Inc',
-                    period: 'Jun 2018 - Dec 2019',
-                    description: 'Developed responsive and accessible web applications using modern frontend technologies.',
+                    title: 'IT Support Technician/Systems Administrator',
+                    company: 'CentraleSupélec - Gif-Sur-Yvette, France',
+                    period: 'June - July 2021',
+                    description: 'Internship position providing IT support and system administration',
                     achievements: [
-                        'Built reusable component library',
-                        'Reduced loading time by 60%',
-                        'Implemented A/B testing framework'
-                    ]
-                },
-                {
-                    title: 'Software Engineer Intern',
-                    company: 'DEF Ltd',
-                    period: 'Jan 2017 - May 2018',
-                    description: 'Contributed to the development of internal tools and participated in code reviews.',
-                    achievements: [
-                        'Developed automated testing suite',
-                        'Created documentation system',
-                        'Optimized database queries'
+                        'Deployed software remotely to over 120 machines using Ivanti, creating silent installation and uninstallation packages',
+                        'Provided on-site maintenance and troubleshooting in multiple classrooms and lecture halls, effectively communicating with teachers to resolve hardware issues'
                     ]
                 }
             ]

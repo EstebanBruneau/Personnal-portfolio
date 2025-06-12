@@ -37,25 +37,30 @@ const FormationSection = {
         return {
             educationList: [
                 {
-                    degree: "Master's in Computer Science",
-                    school: "University of Technology",
-                    period: "2015 - 2017",
-                    description: "Specialized in Software Engineering and Artificial Intelligence",
+                    degree: "Computer Science and Mathematics Engineering",
+                    school: "Polytech - Paris-Saclay University",
+                    period: "2023 - Present",
+                    description: "Engineering degree with Apprenticeship",
                     highlights: [
-                        "Graduated with honors",
-                        "Research project on machine learning applications",
-                        "Teaching assistant for programming courses"
+                        "Focus on Computer Science and Mathematics",
+                        "Professional experience through apprenticeship program"
                     ]
                 },
                 {
-                    degree: 'Bachelor\'s in Computer Science',
-                    school: 'University of Technology',
-                    period: '2012 - 2015',
-                    description: 'Foundation in computer science and mathematics',
+                    degree: "Engineering Preparatory Program",
+                    school: "Saint-Aspais High School - Melun",
+                    period: "2021 - 2023",
+                    description: "Preparatory classes for engineering schools",
+                    highlights: []
+                },
+                {
+                    degree: "Baccalauréat with honors",
+                    school: "Saint-Aspais High School - Melun",
+                    period: "2019 - 2021",
+                    description: "Mathematics & Physics/Chemistry specialty",
                     highlights: [
-                        'Dean\'s list for academic excellence',
-                        'Led programming club',
-                        'Internship at tech startup'
+                        "European Mention - Spanish",
+                        "Graduated with honors"
                     ]
                 }
             ]
