@@ -7,12 +7,7 @@ A modern, responsive personal portfolio website built with Vue.js and featuring 
 - Interactive and responsive design
 - Animated transitions and hover effects
 - Dark theme 
-- Sections for:
-  - Hero introduction
-  - Professional experience
-  - Education/Formation
-  - Projects showcase
-  - Secret page ehe
+- Sections
 
 ## Technologies Used
 
@@ -62,3 +57,6 @@ Compatible with modern browsers:
 - Firefox
 - Safari
 - Edge
+
+
+Also I wanted to make the cursor the wii cursor but I didnt succeed :(
