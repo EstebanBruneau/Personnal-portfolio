@@ -1,33 +1,24 @@
-function createStars() {
-    const starsContainer = document.createElement('div');
-    starsContainer.className = 'stars';
-    
-    // Create initial stars
-    for (let i = 0; i < 200; i++) {
-        createStar(starsContainer);
+function createFireflies() {
+    const firefliesContainer = document.createElement('div');
+    firefliesContainer.className = 'fireflies';
+
+    for (let i = 0; i < 120; i++) {
+        createFirefly(firefliesContainer);
     }
-    
-    document.querySelector('.animated-background').appendChild(starsContainer);
-    
-    // Periodically add/remove stars
-    setInterval(() => {
-        if (Math.random() > 0.5) {
-            createStar(starsContainer);
-        }
-        // Randomly remove some stars
-        const stars = starsContainer.children;
-        if (stars.length > 150 && Math.random() > 0.7) {
-            stars[Math.floor(Math.random() * stars.length)].remove();
-        }
-    }, 1000);
+
+    const animatedBg = document.querySelector('.animated-background');
+    if (animatedBg) {
+        animatedBg.appendChild(firefliesContainer);
+    }
 }
 
-function createStar(container) {
-    const star = document.createElement('div');
-    star.className = 'star';
-    star.style.left = `${Math.random() * 100}%`;
-    star.style.top = `${Math.random() * 100}%`;
-    star.style.setProperty('--duration', `${2 + Math.random() * 4}s`);
-    star.style.setProperty('--delay', `${Math.random() * 2}s`);
-    container.appendChild(star);
+function createFirefly(container) {
+    const firefly = document.createElement('div');
+    firefly.className = 'firefly';
+    firefly.style.left = `${Math.random() * 100}%`;
+    firefly.style.top = `${Math.random() * 100}%`;
+    firefly.style.setProperty('--duration', `${6 + Math.random() * 8}s`);
+    firefly.style.setProperty('--delay', `${Math.random() * 6}s`);
+    firefly.style.setProperty('--size', `${2 + Math.random() * 3}px`);
+    container.appendChild(firefly);
 }

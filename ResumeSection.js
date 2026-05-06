@@ -1,7 +1,13 @@
 const ResumeSection = {
     template: `
-        <section class="resume">
-            <h2>Professional Experience</h2>
+        <section class="section-shell resume">
+            <header class="section-header">
+                <div>
+                    <p class="eyebrow">Experience</p>
+                    <h2>Forest of Experience</h2>
+                    <p class="section-lead">Roles, impact, and the systems I helped shape.</p>
+                </div>
+            </header>
             <ul>
                 <li v-for="job in jobs" :key="job.title" class="resume-item">
                     <h3>{{ job.title }}</h3>

@@ -1,7 +1,13 @@
 const FormationSection = {
     template: `
-        <section class="resume formation">
-            <h2>Education</h2>
+        <section class="section-shell formation">
+            <header class="section-header">
+                <div>
+                    <p class="eyebrow">Education</p>
+                    <h2>Dune Academy</h2>
+                    <p class="section-lead">Training grounded in computer science, mathematics, and real-world work.</p>
+                </div>
+            </header>
             <transition-group 
                 name="list" 
                 tag="ul"

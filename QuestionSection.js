@@ -1,13 +1,10 @@
 const QuestionSection = {
     template: `
         <section class="question-section">
-            <button @click="goBack">Back</button>
-            <div class="moon"></div>
-            <div class="fade-in-text">
-                Take a moment to relax and breathe
-            </div>
-            <div class="fade-in-text-2">
-                Also smile :)
+            <button class="relax-back" @click="goBack" type="button">Back to map</button>
+            <div class="void-space">
+                <p class="void-message">You've wandered off the map.</p>
+                <div class="void-pulse"></div>
             </div>
         </section>
     `,
@@ -17,7 +14,7 @@ const QuestionSection = {
             this.$root.currentTab = this.$root.lastTab;
             this.$root.selectedTab = this.$root.lastTab;
         },
-        transitionToStarryBackground() {
+        transitionToVoidBackground() {
             const skyBg = document.querySelector('.sky-background');
             const animatedBg = document.querySelector('.animated-background');
             
@@ -36,12 +33,12 @@ const QuestionSection = {
                 animatedBg.style.opacity = '0';
                 setTimeout(() => {
                     animatedBg.style.visibility = 'hidden';
-                }, 2000); // Changed from 500 to 2000 to match the 2s CSS transition
+                }, 6000);
             }
         }
     },
     mounted() {
-        this.transitionToStarryBackground();
+        this.transitionToVoidBackground();
     },
     beforeUnmount() {
         this.transitionToSkyBackground();

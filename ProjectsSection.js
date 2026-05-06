@@ -1,11 +1,18 @@
 const ProjectsSection = {
     template: `
-        <section class="projects">
-            <h2>My Projects</h2>
+        <section class="section-shell projects">
+            <header class="section-header">
+                <div>
+                    <p class="eyebrow">Projects</p>
+                    <h2>Tidal Workshop</h2>
+                    <p class="section-lead">Selected builds that mix algorithms, playful systems, and practical tools.</p>
+                </div>
+            </header>
             <div class="projects-grid">
                 <article v-for="project in projects" :key="project.id" class="project-card">
                     <div class="project-image">
-                        <img :src="project.image" :alt="project.title">
+                        <img v-if="project.image" :src="project.image" :alt="project.title">
+                        <div v-else class="project-placeholder">Case Study</div>
                         <div class="project-overlay">
                             <div class="project-links">
                                 <a :href="project.github" target="_blank" class="project-link" v-if="project.github">
