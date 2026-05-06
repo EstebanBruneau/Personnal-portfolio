@@ -28,7 +28,6 @@ The website is fully responsive and works on:
 - Desktop computers
 - Tablets
 - Mobile phones
-- Your mom (???)
 
 ## Component Overview
 
